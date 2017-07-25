@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="galleria/galleria.classic.css">
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <meta charset="UTF-8">
+        <title>Blank App Designer Cordova Web App Project Template</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
+  * Note that Windows device viewports work better when initialized using the @viewport CSS rule.
+  * For a quick overview of "meta viewport" and @viewport, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see how it works, try your app on a real device with and without a "meta viewport" tag.
+  * Additional useful references include:
+  *   http://www.quirksmode.org/mobile/viewports.html
+  *   http://www.quirksmode.org/mobile/metaviewport/devices.html
+  *   https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+            
+            @-ms-viewport {
+                width: 100vw;
+                min-zoom: 100%;
+                zoom: 100%;
+            }
+            
+            @viewport {
+                width: 100vw;
+                min-zoom: 100% zoom: 100%;
+            }
+            
+            @-ms-viewport {
+                user-zoom: fixed;
+                min-zoom: 100%;
+            }
+            
+            @viewport {
+                user-zoom: fixed;
+                min-zoom: 100%;
+            }
+            /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+            
+            a:link {
+                text-decoration: none;
+                color: white;
+            }
+            
+            a:visited {
+                text-decoration: none;
+                color: white;
+            }
+            
+            a:hover {
+                text-decoration: none;
+                color: white;
+            }
+            
+            a:active {
+                text-decoration: none;
+                color: white;
+            }
+            colortoggle{
+                color: black
+            }
+        </style>
+
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Recommended location for your JavaScript libraries -->
+        <!-- These library references (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/mc/hammer.js"></script> -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <!--
+  * cordova.js is a phantom lib for "Cordova HTML5 web app," it does nothing in a "Standard HTML5 web app"
+  * Seeing a "Failed to load resource: net::ERR_FILE_NOT_FOUND" message caused by this "cordova.js" script?
+  * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
+  * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
+-->
+        <script src="cordova.js" id="xdkJScordova_"></script>
+
+        <script src="js/app.js"></script>
+        <!-- for your event code, see README and file comments for details -->
+        <script src="js/init-app.js"></script>
+        <!-- for your init code, see README and file comments for details -->
+        <script src="xdk/init-dev.js"></script>
+        <!-- normalizes device and document ready events, see file for details -->
+        <script type="application/javascript" src="lib/jquery.min.js"></script>
+        <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+        <script type="application/javascript" src="sidebar/js/hammer.js"></script>
+        <script type="application/javascript" src="sidebar/js/jquery.hammer.js"></script>
+        <script type="application/javascript" src="sidebar/js/swipe-hammer.js"></script>
+        <script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+        <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="xdk/ad/bs_subpage.js"></script>
+        <script type="application/javascript" src="js/bootbox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js" integrity="sha256-thgNwq1kqppxWOZpF2V/KfgGpLeBWbLMg704XfwYUDQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" integrity="sha256-GcknncGKzlKm69d+sp+k3A2NyQE+jnu43aBl6rrDN2I=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js" integrity="sha256-+q+dGCSrVbejd3MDuzJHKsk2eXd4sF5XYEMfPZsOnYE=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js" integrity="sha256-jYMHiFJgIHHSIyPp1uwI5iv5dYgQZIxaQ4RwnpEeEDQ=" crossorigin="anonymous"></script>
+        <script type="application/javascript" src="https://www.google.com/jsapi"></script>
+
+    </head>
+
+    <body>
+        <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+        <div class="upage back" id="mainpage">
+            <div class="upage-outer">
+                <div class="uib-header header-bg container-group inner-element uib_w_1" data-uib="layout/header" data-ver="0">
+                    <h2 style="color:white">SADA </h2>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left">
+                        <div class="widget uib_w_66 d-margins headerimg" data-uib="media/img" data-ver="0">
+                            <figure class="figure-align">
+                                <img src="images/sada.png" id="sadalogo">
+
+                                <figcaption data-position="bottom"></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="widget-container content-area horiz-area wrapping-col right">
+                        <button class="btn widget uib_w_2 d-margins colorBTN btn-lg btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="menuTop"><i class="glyphicon glyphicon-th-list button-icon-left" data-position="left"></i> 
+                        </button>
+                    </div>
+                </div>
+                <div class="upage-content ac0 content-area vertical-col left" id="page_60_93">
+                    <div class="well no_wrap  widget uib_w_3 d-margins lgn" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_1 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="tarea widget uib_w_4 d-margins text" data-uib="media/text" data-ver="0" name="uib_w_4">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p><strong>Login</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="table-thing widget uib_w_5 margininput" data-uib="twitter%20bootstrap/input" data-ver="1">
+                                    <label class="narrow-control" for="usernameL"></label>
+                                    <input class="wide-control form-control default" type="text" placeholder="Username" id="usernameL">
+                                </div>
+                                <div class="table-thing widget uib_w_6 margininput" data-uib="twitter%20bootstrap/input" data-ver="1">
+                                    <label class="narrow-control" for="passwordL"></label>
+                                    <input class="wide-control form-control default" type="password" placeholder="Password" id="passwordL">
+                                </div>
+                                <button class="btn widget uib_w_7 btn-lg btn-primary margininput" data-uib="twitter%20bootstrap/button" data-ver="1" id="brnLogin"><i class="glyphicon glyphicon-user button-icon-left" data-position="left"></i>Login</button>
+
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-element uib_w_8 uib_sidebar rightbar bar-bg thumb-bg bar-gutter swipe" data-uib="layout/right_sidebar" data-ver="1" data-anim="{'style':'overlap', 'v':200, 'side':'right', 'dur':200}">
+                    <div class="sidebar-content content-area vertical-col">
+
+                        <div class="well no_wrap  widget uib_w_9 d-margins" data-uib="twitter%20bootstrap/well" data-ver="1" id="slider">
+                            <div class="col uib_col_3 single-col" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+                                    <div class="widget uib_w_10 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                        <figure class="figure-align">
+                                            <img src="images/graph.png">
+
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div>
+                                    <button class="btn widget uib_w_11 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Home</button>
+                                    <button class="btn widget uib_w_12 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Aduan</button>
+                                    <button class="btn widget uib_w_13 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Kutipan</button>
+                                    <button class="btn widget uib_w_14 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Tunggakan</button>
+                                    <button class="btn widget uib_w_15 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Graph Perolehan</button>
+                                    <button class="btn widget uib_w_16 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1">Logout</button>
+                                    <span class="uib_shim"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="homepage" class="upage-content vertical-col left hidden">
+
+                    <div class="grid urow uib_row_19 row-height-19" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_36 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="widget uib_w_65 scale-image d-margins imgallign" data-uib="media/img" data-ver="0">
+                                    <figure class="figure-align">
+                                        <img src="images/sada.png">
+
+                                        <figcaption data-position="bottom"></figcaption>
+                                    </figure>
+                                </div>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                    <div class="grid grid-pad urow uib_row_14 row-height-14 bar-bg" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_13 col-0_6-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_19 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                                href="#" id="btnAduan">
+                                    <img src="images/Untitled-1.png">
+                                    <span class="uib-caption">Aduan</span>
+                                </a>
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_20 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                                href="#" id="btnTunggakan">
+                                    <img src="images/tunggakan.png">
+                                    <span class="uib-caption">Tunggakan</span>
+                                </a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <div class="col uib_col_14 col-0_6-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_21 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                                href="#" id="btnKutipan">
+                                    <img src="images/KUTIPAN.png">
+                                    <span class="uib-caption">Kutipan</span>
+                                </a>
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_22 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                                href="#">
+                                    <img src="images/graph.png">
+                                    <span class="uib-caption">Graph perolehan</span>
+                                </a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                <div id="aduan" class="upage-content vertical-col left hidden">
+
+                    <div class="well no_wrap  widget uib_w_23 lgn" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_17 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="tarea widget uib_w_24 d-margins label" data-uib="media/text" data-ver="0" name="uib_w_24">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>ADUAN</p>
+                                    </div>
+                                </div>
+                                <div class="panel-group no_wrap widget uib_w_67 d-margins" data-uib="twitter%20bootstrap/accordion" data-ver="1" id="bs-accordion-1">
+                                    <div class="panel widget uib_w_68 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-3" data-parent="#bs-accordion-1">Harian</a>
+       </h4>
+                                        </div>
+                                        <div id="bs-accordion-group-3" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="col uib_col_37 single-col" data-uib="layout/col" data-ver="0">
+                                                    <div class="widget-container content-area vertical-col">
+                                                        <div class="tarea widget uib_w_71 d-margins" data-uib="media/text" data-ver="0" name="uib_w_71">
+                                                            <div class="widget-container left-receptacle"></div>
+                                                            <div class="widget-container right-receptacle"></div>
+                                                            <div class="text-container">
+                                                                <p>Jumlah Aduan &nbsp; &nbsp; &nbsp;: 10</p>
+
+                                                                <p>Aduan selesai &nbsp; &nbsp; &nbsp;&nbsp;: 2</p>
+
+                                                                <p>Aduan tertunggak :8</p>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn widget uib_w_77 d-margins btn-xs btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="GaduanH">Graph aduan harian</button>
+                                                        <span class="uib_shim"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel widget uib_w_69 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-4" data-parent="#bs-accordion-1">Bulanan</a>
+       </h4>
+                                        </div>
+                                        <div id="bs-accordion-group-4" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="col uib_col_38 single-col" data-uib="layout/col" data-ver="0">
+                                                    <div class="widget-container content-area vertical-col">
+                                                        <div class="tarea widget uib_w_72 d-margins" data-uib="media/text" data-ver="0" name="uib_w_72">
+                                                            <div class="widget-container left-receptacle"></div>
+                                                            <div class="widget-container right-receptacle"></div>
+                                                            <div class="text-container">
+                                                                <p>Jumlah Aduan &nbsp; &nbsp; &nbsp;: 100</p>
+
+                                                                <p>Aduan selesai &nbsp; &nbsp; &nbsp;&nbsp;: 20</p>
+
+                                                                <p>Aduan tertunggak :80</p>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn widget uib_w_78 d-margins btn-xs btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="GaduanB">Graph aduan bulanan</button>
+                                                        <span class="uib_shim"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel widget uib_w_70 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+           <a class="accordion-toggle" data-toggle="collapse" href="#bs-accordion-group-5" data-parent="#bs-accordion-1">Tahunan</a>
+       </h4>
+                                        </div>
+                                        <div id="bs-accordion-group-5" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="col uib_col_39 single-col" data-uib="layout/col" data-ver="0">
+                                                    <div class="widget-container content-area vertical-col">
+                                                        <div class="tarea widget uib_w_73 d-margins" data-uib="media/text" data-ver="0" name="uib_w_73">
+                                                            <div class="widget-container left-receptacle"></div>
+                                                            <div class="widget-container right-receptacle"></div>
+                                                            <div class="text-container">
+                                                                <p>Jumlah Aduan &nbsp; &nbsp; &nbsp;: 1000</p>
+
+                                                                <p>Aduan selesai &nbsp; &nbsp; &nbsp;&nbsp;: 200</p>
+
+                                                                <p>Aduan tertunggak :800</p>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn widget uib_w_79 d-margins btn-xs btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="GaduanT">Graph aduan Tahunan</button>
+                                                        <span class="uib_shim"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="kutipan" class="upage-content vertical-col left hidden">
+                    <div class="well no_wrap  widget uib_w_28 d-margins lgn" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_18 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="tarea widget uib_w_29 d-margins label" data-uib="media/text" data-ver="0" name="uib_w_29">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>Kutiapan</p>
+                                    </div>
+                                </div>
+                                <div class="panel-group no_wrap widget uib_w_61 d-margins" data-uib="twitter%20bootstrap/accordion" data-ver="1" id="bs-accordion-0">
+                                    <div class="panel widget uib_w_62 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+           <a class="accordion-toggle colortoggle" data-toggle="collapse" href="#bs-accordion-group-0" data-parent="#bs-accordion-0">Harian</a>
+       </h4>
+                                        </div>
+                                        <div id="bs-accordion-group-0" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="col uib_col_33 single-col" data-uib="layout/col" data-ver="0">
+                                                    <div class="widget-container content-area vertical-col">
+                                                        <div class="tarea widget uib_w_74 d-margins" data-uib="media/text" data-ver="0" name="uib_w_74">
+                                                            <div class="widget-container left-receptacle"></div>
+                                                            <div class="widget-container right-receptacle"></div>
+                                                            <div class="text-container">
+                                                                <p>Tarikh 26/7/2017: RM 1255.45</p>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn widget uib_w_80 d-margins btn-xs btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="GkutipanH">Graph Kutipan Harian</button>
+                                                        <span class="uib_shim"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel widget uib_w_63 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+           <a class="accordion-toggle colortoggle" data-toggle="collapse" href="#bs-accordion-group-1" data-parent="#bs-accordion-0">Bulanan</a>
+       </h4>
+                                        </div>
+                                        <div id="bs-accordion-group-1" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="col uib_col_34 single-col" data-uib="layout/col" data-ver="0">
+                                                    <div class="widget-container content-area vertical-col">
+                                                        <div class="tarea widget uib_w_75 d-margins" data-uib="media/text" data-ver="0" name="uib_w_75">
+                                                            <div class="widget-container left-receptacle"></div>
+                                                            <div class="widget-container right-receptacle"></div>
+                                                            <div class="text-container">
+                                                                <p>Bulan Julai : RM 1202255.45</p>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn widget uib_w_81 d-margins btn-xs btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="GkutipanB">Graph Kutipan Bulanan</button>
+                                                        <span class="uib_shim"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel widget uib_w_64 panel-primary" data-uib="twitter%20bootstrap/collapsible" data-ver="1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+           <a class="accordion-toggle colortoggle" data-toggle="collapse" href="#bs-accordion-group-2" data-parent="#bs-accordion-0">Tahunan</a>
+       </h4>
+                                        </div>
+                                        <div id="bs-accordion-group-2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="col uib_col_35 single-col" data-uib="layout/col" data-ver="0">
+                                                    <div class="widget-container content-area vertical-col">
+                                                        <div class="tarea widget uib_w_76 d-margins" data-uib="media/text" data-ver="0" name="uib_w_76">
+                                                            <div class="widget-container left-receptacle"></div>
+                                                            <div class="widget-container right-receptacle"></div>
+                                                            <div class="text-container">
+                                                                <p>2017 : RM 11457214542.45</p>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn widget uib_w_82 d-margins btn-xs btn-link" data-uib="twitter%20bootstrap/button" data-ver="1" id="GkutipanT">Graph Kutipan Tahunan</button>
+                                                        <span class="uib_shim"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tunggakan" class="upage-content vertical-col left hidden">
+                    <div class="well no_wrap  widget uib_w_33 d-margins tungggakmargin" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_19 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="tarea widget uib_w_34 d-margins label" data-uib="media/text" data-ver="0" name="uib_w_34">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>Tunggakan</p>
+                                    </div>
+                                </div><span class="widget uib_w_36 d-margins badge" data-uib="twitter%20bootstrap/badge_and_label" data-ver="1">Kuantiti tunggakan</span>
+                                <div class="tarea widget uib_w_35 d-margins tunggakans" data-uib="media/text" data-ver="0" name="uib_w_35">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>100 buah rumah</p>
+                                    </div>
+                                </div><span class="widget uib_w_37 d-margins badge" data-uib="twitter%20bootstrap/badge_and_label" data-ver="1">Jumlah Tunggakan</span>
+                                <div class="tarea widget uib_w_38 d-margins tunggakans" data-uib="media/text" data-ver="0" name="uib_w_38">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>RM 1,999,999.00</p>
+                                    </div>
+                                </div>
+                                <div class="panel widget uib_w_39 d-margins panel-default" data-uib="twitter%20bootstrap/panel" data-ver="1">
+                                    <div class="panel-heading">
+                                        <div class="widget-container">
+                                            <div class="tarea widget uib_w_41 labelTEXT" data-uib="media/text" data-ver="0" name="uib_w_41">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div class="text-container">
+                                                    <p>Papar Tunggakan</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col uib_col_21 single-col" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+                                            <button class="btn widget uib_w_42 d-margins btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btntunggakanbesar">Tunggakan Besar</button>
+                                            <button class="btn widget uib_w_43 btnmargin btn-default" data-uib="twitter%20bootstrap/button" data-ver="1" id="btntunggakanlama">Tunggakan Lama</button>
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="graph" class="upage-content vertical-col left hidden">
+
+                    <div class="well no_wrap  widget uib_w_44 d-margins tungggakmargin" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_22 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <canvas id="myChart" width="400" height="400" style="background-color:white"></canvas>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tunggakanBesar" class="upage-content vertical-col left hidden">
+
+                    <div class="well no_wrap  widget uib_w_45 d-margins" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_23 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col center">
+                                <div class="tarea widget uib_w_52 d-margins label" data-uib="media/text" data-ver="0" name="uib_w_52">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>Senarai Tunggakan Besar</p>
+                                    </div>
+                                </div>
+
+                                <a class="list-group-item allow-badge widget uib_w_48" data-uib="twitter%20bootstrap/list_item" data-ver="1">
+                                    <h4 class="list-group-item-heading">contoh bin contoh</h4>
+
+                                    <p class="list-group-item-text">RM 20000</p>
+                                </a>
+                                <a class="list-group-item allow-badge widget uib_w_49" data-uib="twitter%20bootstrap/list_item" data-ver="1">
+                                    <h4 class="list-group-item-heading">satu bin dua</h4>
+                                    <p class="list-group-item-text">RM 100000</p>
+                                </a>
+
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="TunggakanLama" class="upage-content vertical-col left hidden">
+                    <div class="well no_wrap  widget uib_w_53 d-margins" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_27 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <div class="tarea widget uib_w_54 d-margins label" data-uib="media/text" data-ver="0" name="uib_w_54">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div class="text-container">
+                                        <p>Senarai Tunggakan Lama</p>
+                                    </div>
+                                </div>
+
+                                <a class="list-group-item allow-badge widget uib_w_56" data-uib="twitter%20bootstrap/list_item" data-ver="1">
+                                    <h4 class="list-group-item-heading">contoh bin contoh</h4>
+                                    <p class="list-group-item-text">12 bulan</p>
+                                </a>
+                                <a class="list-group-item allow-badge widget uib_w_57" data-uib="twitter%20bootstrap/list_item" data-ver="1">
+                                    <h4 class="list-group-item-heading">Satu bin dua</h4>
+                                    <p class="list-group-item-text">11 bulan</p>
+                                </a>
+
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="graphHarian" class="upage-content vertical-col left hidden">
+                    <div class="well no_wrap  widget uib_w_44 d-margins tungggakmargin" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_22 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <canvas id="chartgraphHarian" width="400" height="400" style="background-color:white"></canvas>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="graphBulanan" class="upage-content vertical-col left hidden">
+                    <div class="well no_wrap  widget uib_w_44 d-margins tungggakmargin" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_22 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <canvas id="chartgraphBulanan" width="400" height="400" style="background-color:white"></canvas>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="graphTahunan" class="upage-content vertical-col left hidden">
+                    <div class="well no_wrap  widget uib_w_44 d-margins tungggakmargin" data-uib="twitter%20bootstrap/well" data-ver="1">
+                        <div class="col uib_col_22 single-col" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <canvas id="chartgraphTahunan" width="400" height="400" style="background-color:white"></canvas>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="upage hidden back" id="admin">
+            <div class="upage-outer">
+                <div class="uib-header header-bg container-group inner-element uib_w_17" data-uib="layout/header" data-ver="0">
+                    <h2 style="color:white">SADA Staff</h2>
+                    <div class="widget-container wrapping-col single-centered"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col left"></div>
+                    <div class="widget-container content-area horiz-area wrapping-col right">
+                        <button class="btn widget uib_w_18 d-margins btn-lg btn-link colorBTN" data-uib="twitter%20bootstrap/button" data-ver="1" id="menuAdmin"><i class="glyphicon glyphicon-th-list button-icon-left" data-position="left"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="upage-content ac0 content-area vertical-col left" id="page_6_53"></div>
+                <div id="updateAduan" class="upage-content vertical-col left hidden">
+
+                    <div class="grid urow uib_row_17 row-height-17" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_30 col-0_6-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_58 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                                href="#">
+                                    <img src="images/Arrow.png">
+                                    <span class="uib-caption">Button</span>
+                                </a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <div class="col uib_col_31 col-0_6-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_59 media-button-text-bottom d-margins" data-uib="media/graphic_button" data-ver="0"
+                                href="#">
+                                    <img src="images/Arrow.png">
+                                    <span class="uib-caption">Button</span>
+                                </a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+
+                        <span class="uib_shim"></span>
+                    </div>
+                    <div class="grid urow uib_row_18 row-height-18" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_32 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+                                <a class="uib-graphic-button default-graphic-sizing default-image-sizing hover-graphic-button active-graphic-button default-graphic-button default-graphic-text widget uib_w_60 d-margins media-button-text-bottom" data-uib="media/graphic_button" data-ver="0"
+                                href="#">
+                                    <img src="images/Arrow.png">
+                                    <span class="uib-caption">Button</span>
+                                </a>
+                                <span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -543,7 +543,7 @@ label:empty {
 }
 @media all {
   .scale-image img {
-    width: 30%;
+    width: 70%;
   }
 }
 .allow-badge > .badge.glyphicon {
@@ -911,8 +911,8 @@ label:empty {
 @media all {
   .back {
     background-color: ;
-    background-image: linear-gradient(top, #00c4c4 0%, #00c4c4 0%, #0000ff 62.85006831%, #000080 100%, #000080 100%);
-    background-image: -webkit-linear-gradient(top, #00c4c4 0%, #00c4c4 0%, #0000ff 62.85006831%, #000080 100%, #000080 100%);
+    background-image: linear-gradient(top, #00c4c4 0%, #00c4c4 0%, #0000ff 81.62568306%, #000080 100%, #000080 100%);
+    background-image: -webkit-linear-gradient(top, #00c4c4 0%, #00c4c4 0%, #0000ff 81.62568306%, #000080 100%, #000080 100%);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -1113,4 +1113,36 @@ label:empty {
   .headerimg img {
     width: 15%;
   }
+}
+@media all {
+  .headIMG {
+    width: 15% !important;
+    -webkit-flex: 0 0 auto !important;
+    -moz-flex: 0 0 auto !important;
+    -ms-flex: 0 0 auto !important;
+    -o-flex: 0 0 auto !important;
+    flex: 0 0 auto !important;
+  }
+}
+@media all {
+  .headIMGsize > img {
+    width: 100%;
+  }
+}
+.center {
+  text-align: center;
+}
+/*
+	.centers
+	.centers > .panel-heading
+	.centers > .panel-collapse > .panel-body
+*/
+@media all {
+  .ceb p {
+    font-weight: bold;
+    text-align: center;
+  }
+}
+.paddingtext {
+  padding-left: 2%;
 }

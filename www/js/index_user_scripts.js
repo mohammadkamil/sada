@@ -5,6 +5,7 @@
     /*
       hook up event handlers 
     */
+    var a=0;
     function register_event_handlers() {
 
         $("#menuTop").hide();
@@ -12,15 +13,16 @@
         /* button  #brnLogin */
         $(document).on("click", "#brnLogin", function (evt) {
             /*global activate_subpage */
+            a=1;
             $("#menuTop").show();
-            $("#sadalogo").hide();
+            $("#headBTNhome").hide();
             activate_subpage("#homepage");
             return false;
         });
 
         /* graphic button  #btnAduan */
         $(document).on("click", "#btnAduan", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             activate_subpage("#aduan");
             return false;
@@ -28,7 +30,7 @@
 
         /* graphic button  #btnTunggakan */
         $(document).on("click", "#btnTunggakan", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             activate_subpage("#tunggakan");
             return false;
@@ -36,57 +38,14 @@
 
         /* graphic button  #btnKutipan */
         $(document).on("click", "#btnKutipan", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             activate_subpage("#kutipan");
             return false;
         });
 
         /* graphic button  Graph perolehan */
-        $(document).on("click", ".uib_w_22", function (evt) {
-            $("#sadalogo").show();
-            /*global activate_subpage */
-            var ctx = document.getElementById("myChart").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        type: 'bar',
-                        data: [1, 2, 3, 4, 5, 6],
-                        backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-                        borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-                        borderWidth: 1
-        }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-            }]
-                    }
-                }
-            });
-            activate_subpage("#graph");
-            return false;
-        });
+        
 
         /* button  #menuTop */
         $(document).on("click", "#menuTop", function (evt) {
@@ -104,7 +63,7 @@
 
         /* button  Home */
         $(document).on("click", ".uib_w_11", function (evt) {
-            $("#sadalogo").hide();
+            $("#headBTNhome").hide();
             /*global activate_subpage */
             activate_subpage("#homepage");
             uib_sb.toggle_sidebar($(".uib_w_8"));
@@ -113,7 +72,7 @@
 
         /* button  Aduan */
         $(document).on("click", ".uib_w_12", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             activate_subpage("#aduan");
             uib_sb.toggle_sidebar($(".uib_w_8"));
@@ -122,7 +81,7 @@
 
         /* button  Kutipan */
         $(document).on("click", ".uib_w_13", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             activate_subpage("#kutipan");
             uib_sb.toggle_sidebar($(".uib_w_8"));
@@ -131,63 +90,64 @@
 
         /* button  Tunggakan */
         $(document).on("click", ".uib_w_14", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             activate_subpage("#tunggakan");
             uib_sb.toggle_sidebar($(".uib_w_8"));
             return false;
         });
 
-        /* button  Graph Perolehan */
-        $(document).on("click", ".uib_w_15", function (evt) {
-            $("#sadalogo").show();
-            /*global activate_subpage */
-            var ctx = document.getElementById("myChart").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-                        borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-                        borderWidth: 1
-        }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-            }]
-                    }
-                }
-            });
-            activate_subpage("#graph");
-            uib_sb.toggle_sidebar($(".uib_w_8"));
-            return false;
-        });
+//        /* button  Graph Perolehan */
+//        $(document).on("click", ".uib_w_15", function (evt) {
+//            $("#headBTNhome").show();
+//            /*global activate_subpage */
+//            var ctx = document.getElementById("myChart").getContext('2d');
+//            var myChart = new Chart(ctx, {
+//                type: 'bar',
+//                data: {
+//                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+//                    datasets: [{
+//                        label: '# of Votes',
+//                        data: [12, 19, 3, 5, 2, 3],
+//                        backgroundColor: [
+//                'rgba(255, 99, 132, 0.2)',
+//                'rgba(54, 162, 235, 0.2)',
+//                'rgba(255, 206, 86, 0.2)',
+//                'rgba(75, 192, 192, 0.2)',
+//                'rgba(153, 102, 255, 0.2)',
+//                'rgba(255, 159, 64, 0.2)'
+//            ],
+//                        borderColor: [
+//                'rgba(255,99,132,1)',
+//                'rgba(54, 162, 235, 1)',
+//                'rgba(255, 206, 86, 1)',
+//                'rgba(75, 192, 192, 1)',
+//                'rgba(153, 102, 255, 1)',
+//                'rgba(255, 159, 64, 1)'
+//            ],
+//                        borderWidth: 1
+//        }]
+//                },
+//                options: {
+//                    scales: {
+//                        yAxes: [{
+//                            ticks: {
+//                                beginAtZero: true
+//                            }
+//            }]
+//                    }
+//                }
+//            });
+//            activate_subpage("#graph");
+//            uib_sb.toggle_sidebar($(".uib_w_8"));
+//            return false;
+//        });
 
         /* button  Logout */
         $(document).on("click", ".uib_w_16", function (evt) {
             $("#menuTop").hide();
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
+            a=0;
             /*global activate_subpage */
             activate_subpage("#page_60_93");
             uib_sb.toggle_sidebar($(".uib_w_8"));
@@ -210,7 +170,7 @@
 
         /* button  #GaduanH */
         $(document).on("click", "#GaduanH", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             var aduaharian = document.getElementById("chartgraphHarian");
             var myChart = new Chart(aduaharian, {
@@ -256,7 +216,7 @@
 
         /* button  #GaduanB */
         $(document).on("click", "#GaduanB", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             var ctx = document.getElementById("chartgraphBulanan");
             var myChart = new Chart(ctx, {
@@ -304,7 +264,7 @@
 
         /* button  #GaduanT */
         $(document).on("click", "#GaduanT", function (evt) {
-            $("#sadalogo").show();
+            $("#headBTNhome").show();
             /*global activate_subpage */
             var ctx = document.getElementById("chartgraphTahunan");
             var myChart = new Chart(ctx, {
@@ -350,7 +310,7 @@
         /* button  #GkutipanH */
     $(document).on("click", "#GkutipanH", function(evt)
     {
-        $("#sadalogo").show();
+        $("#headBTNhome").show();
             /*global activate_subpage */
             var aduaharian = document.getElementById("chartgraphHarian");
             var myChart = new Chart(aduaharian, {
@@ -396,7 +356,7 @@
         /* button  #GkutipanB */
     $(document).on("click", "#GkutipanB", function(evt)
     {
-         $("#sadalogo").show();
+         $("#headBTNhome").show();
             /*global activate_subpage */
             var ctx = document.getElementById("chartgraphBulanan");
             var myChart = new Chart(ctx, {
@@ -443,7 +403,7 @@
         /* button  #GkutipanT */
     $(document).on("click", "#GkutipanT", function(evt)
     {
-      $("#sadalogo").show();
+      $("#headBTNhome").show();
             /*global activate_subpage */
             var ctx = document.getElementById("chartgraphTahunan");
             var myChart = new Chart(ctx, {
@@ -482,6 +442,70 @@
             });
 
          activate_subpage("#graphTahunan"); 
+         return false;
+    });
+    
+        /* graphic button  #headBTNhome */
+    $(document).on("click", "#headBTNhome", function(evt)
+    {
+         /*global activate_subpage */
+        if(a!==0){
+           $("#headBTNhome").hide();
+         activate_subpage("#homepage");  
+        }
+        
+         return false;
+    });
+    
+        /* graphic button  #btnaduanIMG */
+    $(document).on("click", "#btnaduanIMG", function(evt)
+    {
+         /*global activate_subpage */
+         $("#headBTNhome").show();
+         activate_subpage("#aduanpage"); 
+         return false;
+    });    
+        /* button  #btnDiterima */
+    $(document).on("click", "#btnDiterima", function(evt)
+    {
+         /*global activate_subpage */
+        $("#aduantext").html("Nama Pengadu: Mohammad kamil bin abu seman<br>Tarikh : 25/7/2017<br>Daerah: SIK<br>Jenis Aduan: Kecurian Air<br>Status : Diterima");
+        $("#btnDiterima").html("Dalam Process");
+         activate_subpage("#AduanDetail"); 
+         return false;
+    });
+    
+        /* listitem  Kecurian Air- Baling */
+    $(document).on("click", ".uib_w_88", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#AduanDetail"); 
+         return false;
+    });
+    
+        /* listitem  Air Kotor - Sik */
+    $(document).on("click", ".uib_w_87", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#AduanDetail"); 
+         return false;
+    });
+    
+        /* listitem  .uib_w_89 */
+    $(document).on("click", ".uib_w_89", function(evt)
+    {
+         /*global activate_subpage */
+         activate_subpage("#AduanDetail"); 
+         return false;
+    });
+    
+        /* button  Aduan */
+    $(document).on("click", ".uib_w_15", function(evt)
+    {
+         /*global activate_subpage */
+         $("#headBTNhome").show();
+        uib_sb.toggle_sidebar($(".uib_w_8"));
+         activate_subpage("#aduanpage"); 
          return false;
     });
     
